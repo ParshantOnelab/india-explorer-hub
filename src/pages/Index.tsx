@@ -7,6 +7,7 @@ import QueryForm from "@/components/QueryForm";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  
   return (
     <div className="min-h-screen bg-white">
       <Hero />
