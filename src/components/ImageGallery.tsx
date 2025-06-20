@@ -34,10 +34,7 @@ const ImageGallery = () => {
     { id: 11, src: imgUttr1, category: 'uttarakhand', title: 'Uttr 1', location: 'Uttarakhand' },
     { id: 12, src: imgUttr2, category: 'uttarakhand', title: 'Uttr 2', location: 'Uttarakhand' },
     { id: 13, src: imgUttr3, category: 'uttarakhand', title: 'Uttr 3', location: 'Uttarakhand' },
-    // { id: 14, src: imgUttr4, category: 'wildlife', title: 'Uttr 4', location: 'Uttarakhand' },
-    // { id: 15, src: imgIMG2167, category: 'wildlife', title: 'IMG 2167', location: 'National Parks' },
-    // { id: 16, src: imgIMG2168, category: 'wildlife', title: 'IMG 2168', location: 'National Parks' },
-    // { id: 17, src: imgIMG5618, category: 'wildlife', title: 'IMG 5618', location: 'National Parks' },
+
   ];
 
   const categories = [
