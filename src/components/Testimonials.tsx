@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { MdMan, MdWoman } from "react-icons/md";
 
 const Testimonials = () => {
   const testimonials = [
@@ -8,7 +9,7 @@ const Testimonials = () => {
       country: "India (Delhi)",
       rating: 5,
       text: "Exploring the peaceful villages of Uttarakhand was a dream. From morning yoga by the Ganges in Rishikesh to trekking in Chopta, every moment felt magical.",
-      image: "https://images.unsplash.com/photo-1533419026880-ef4b5d35c4c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      gender: "female"
     },
     {
       id: 2,
@@ -16,7 +17,7 @@ const Testimonials = () => {
       country: "Spain",
       rating: 5,
       text: "I never imagined such stunning views! Himachal’s Spiti Valley was breathtaking, and our guide ensured we experienced true Himalayan hospitality.",
-      image: "https://images.unsplash.com/photo-1551105114-3ba6983d3c82?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      gender: "male"
     },
     {
       id: 3,
@@ -24,7 +25,7 @@ const Testimonials = () => {
       country: "India (Mumbai)",
       rating: 5,
       text: "The blend of adventure and spirituality in Himachal is unmatched. Paragliding in Bir and meditating in monasteries gave me both adrenaline and peace.",
-      image: "https://images.unsplash.com/photo-1582233475864-53f8d98c8f78?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      gender: "female"
     },
     {
       id: 4,
@@ -32,7 +33,7 @@ const Testimonials = () => {
       country: "Germany",
       rating: 5,
       text: "I went solo but left with lifelong friends! The homestays in Uttarakhand offered delicious food, warmth, and stories I’ll never forget.",
-      image: "https://images.unsplash.com/photo-1574712077248-f358c767f5a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80"
+      gender: "male"
     }
   ];
 
@@ -52,23 +53,25 @@ const Testimonials = () => {
           {testimonials.map(testimonial => (
             <div key={testimonial.id} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-center mb-6">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full object-cover mr-4"
-                />
+                <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  {testimonial.gender === "female" ? (
+                    <MdWoman className="w-12 h-12 text-pink-500" />
+                  ) : (
+                    <MdMan className="w-12 h-12 text-blue-500" />
+                  )}
+                </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">{testimonial.name}</h3>
                   <p className="text-gray-600">{testimonial.country}</p>
                 </div>
               </div>
-              
+
               <div className="flex mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              
+
               <p className="text-gray-700 leading-relaxed italic">
                 "{testimonial.text}"
               </p>

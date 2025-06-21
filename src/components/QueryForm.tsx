@@ -1,5 +1,7 @@
 
 import { useState } from "react";
+import { useEffect, useRef } from "react";
+
 import { MapPin, Calendar, Users, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -25,9 +27,27 @@ const QueryForm = () => {
     "Custom Package - Tell us your preference"
   ];
 
+  const [suggestionsVisible, setSuggestionsVisible] = useState(false);
+  const suggestionsRef = useRef<HTMLDivElement | null>(null);
+
+  // Filter destinations on input
+  const filteredDestinations = destinations.filter(dest =>
+    dest.toLowerCase().includes(formData.destination.toLowerCase())
+  );
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (suggestionsRef.current && !suggestionsRef.current.contains(e.target as Node)) {
+        setSuggestionsVisible(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.destination) {
       toast({
@@ -73,7 +93,7 @@ const QueryForm = () => {
               Plan Your Dream Journey
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Ready to explore incredible India with local experts? Fill out the form and we'll create 
+              Ready to explore incredible India with local experts? Fill out the form and we'll create
               a personalized itinerary just for you!
             </p>
 
@@ -166,7 +186,11 @@ const QueryForm = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="9876543210"
+                    pattern="[6-9]{1}[0-9]{9}"
+                    maxLength={10}
+                    minLength={10}
+                    title="Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9"
                   />
                 </div>
 
@@ -191,24 +215,25 @@ const QueryForm = () => {
                 </div>
               </div>
 
-              <div>
+              <div className="relative" ref={suggestionsRef}>
                 <label className="block text-sm font-medium mb-2" htmlFor="destination">
-                  Preferred Destination *
+                  Preferred State *
                 </label>
                 <select
                   id="destination"
                   name="destination"
                   value={formData.destination}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
-                  <option value="">Select your destination</option>
-                  {destinations.map(dest => (
-                    <option key={dest} value={dest}>{dest}</option>
-                  ))}
+                  <option value="">Select a State</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Rajasthan">Rajasthan</option>
                 </select>
               </div>
+
 
               <div>
                 <label className="block text-sm font-medium mb-2" htmlFor="travelDate">
@@ -226,6 +251,20 @@ const QueryForm = () => {
 
               <div>
                 <label className="block text-sm font-medium mb-2" htmlFor="message">
+                  Additional Information and Requests (City Names, Places of Interest)
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="e.g., Rishikesh, Nainital, Jaipur, Manali..."
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              {/* <div>
+                <label className="block text-sm font-medium mb-2" htmlFor="message">
                   Special Requests or Questions
                 </label>
                 <textarea
@@ -237,7 +276,7 @@ const QueryForm = () => {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Tell us about your interests, budget, or any special requirements..."
                 />
-              </div>
+              </div> */}
 
               <button
                 type="submit"

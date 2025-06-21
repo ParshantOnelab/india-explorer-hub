@@ -1,4 +1,3 @@
-
 import { MapPin, Phone, Mail, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
@@ -12,18 +11,18 @@ const Footer = () => {
               <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold">TR</span>
               </div>
-              <span className="text-xl font-bold">Travel Rajasthan</span>
+              <span className="text-xl font-bold">Kabhi Bhi Kahi Bhi</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Your trusted local companions for authentic Indian travel experiences. 
-              We bring you closer to the heart and soul of incredible India.
+              Your trusted travel partner for authentic experiences across Uttarakhand, Himachal Pradesh, and Rajasthan.
+              Explore with locals, uncover hidden gems, and create memories for a lifetime.
             </p>
             <div className="flex space-x-4">
               <a 
                 href="https://instagram.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -50,15 +49,13 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Popular Destinations */}
+          {/* Focus States */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Popular Destinations</h3>
+            <h3 className="text-lg font-semibold mb-4">We Specialize In</h3>
             <ul className="space-y-2">
-              <li><span className="text-gray-400">Rajasthan</span></li>
-              <li><span className="text-gray-400">Himachal Pradesh</span></li>
-              <li><span className="text-gray-400">Kashmir</span></li>
               <li><span className="text-gray-400">Uttarakhand</span></li>
-              <li><span className="text-gray-400">Kerala</span></li>
+              <li><span className="text-gray-400">Himachal Pradesh</span></li>
+              <li><span className="text-gray-400">Rajasthan</span></li>
             </ul>
           </div>
         </div>
@@ -68,7 +65,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="flex items-center space-x-3">
               <MapPin className="w-5 h-5 text-blue-500" />
-              <span className="text-gray-400">Jaipur, Rajasthan, India</span>
+              <span className="text-gray-400">India (Rajasthan, Himachal, Uttarakhand)</span>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="w-5 h-5 text-blue-500" />
@@ -76,7 +73,7 @@ const Footer = () => {
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="w-5 h-5 text-blue-500" />
-              <span className="text-gray-400">info@travelrajasthan.com</span>
+              <span className="text-gray-400">info@kabhibhikahibhi.com</span>
             </div>
           </div>
         </div>
@@ -84,8 +81,8 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-400">
-            © 2024 Travel Rajasthan. All rights reserved. | 
-            <span className="ml-2">Made with ❤️ by local travel enthusiasts</span>
+            © 2025 Kabhi Bhi Kahi Bhi. All rights reserved. |
+            <span className="ml-2">Made with ❤️ by passionate travel lovers</span>
           </p>
         </div>
       </div>

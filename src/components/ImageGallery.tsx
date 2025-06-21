@@ -19,6 +19,7 @@ import imgUttr3 from '../assets/images/uttr3.jpeg';
 
 const ImageGallery = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [showAll, setShowAll] = useState(false);
 
   const images = [
     { id: 1, src: imgDSCN1223, category: 'rajasthan', title: 'DSCN1223', location: 'Rajasthan' },
@@ -46,7 +47,7 @@ const ImageGallery = () => {
   ];
 
   const filteredImages = selectedCategory === "all"
-    ? images
+    ? (showAll ? images : images.slice(0, 6))
     : images.filter(img => img.category === selectedCategory);
 
   return (
@@ -98,6 +99,16 @@ const ImageGallery = () => {
             </div>
           ))}
         </div>
+        {selectedCategory === "all" && images.length > 6 && !showAll && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setShowAll(true)}
+              className="px-8 py-3 rounded-full bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition-colors"
+            >
+              See All
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
